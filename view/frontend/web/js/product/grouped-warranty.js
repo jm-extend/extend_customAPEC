@@ -1,7 +1,5 @@
 /**
- * Extend Warranty - PDP/PLP widget for grouped product for APEC
- * changed from
- * addToCartButton: '#product-addtocart-button'
+ * Extend Warranty - PDP/PLP widget for configurable product
  *
  * @author      Extend Magento Team <magento@guidance.com>
  * @category    Extend

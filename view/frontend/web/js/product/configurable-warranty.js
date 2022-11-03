@@ -1,9 +1,5 @@
 /**
- * Extend Warranty - PDP/PLP widget for configurable product for APEC
- * changed from
- *  insertionPoint: 'div.actions',
- *  addToCartButton: '#product-addtocart-button',
- *
+ * Extend Warranty - PDP/PLP widget for configurable product
  *
  * @author      Extend Magento Team <magento@guidance.com>
  * @category    Extend
@@ -44,7 +40,7 @@ define([
          */
         _bind: function () {
             this._super();
-
+            
             if (this.options.selectors.optionsWrap) {
                 $(this.options.selectors.optionsWrap, this.mainWrap).on('change', this._onOptionsChanged.bind(this));
             }

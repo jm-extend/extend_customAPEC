@@ -1,8 +1,5 @@
 /**
- * Extend Warranty - PDP/PLP widget for simple product for APEC
- * changed from
- *  insertionPoint: 'div.actions',
- *  addToCartButton: '#product-addtocart-button'
+ * Extend Warranty - PDP/PLP widget for simple product
  *
  * @author      Extend Magento Team <magento@guidance.com>
  * @category    Extend
@@ -62,7 +59,7 @@ define([
                 this.element;
 
             this.addToCartForm = $(this.options.selectors.addToCartForm, this.mainWrap);
-            this.addToCartButton = $(this.options.selectors.addToCartButton, this.mainWrap);
+            this.addToCartButton = $(this.options.selectors.addToCartButton);
         },
 
         /**
@@ -74,7 +71,7 @@ define([
                 return;
 
             if (this.addToCartForm && this.addToCartForm.length) {
-                this.addToCartButton.on('click', this._onAddToCart.bind(this));
+                 document.querySelector('.cloned').addEventListener('click', this._onAddToCart.bind(this), true);
             }
         },
 
@@ -96,7 +93,6 @@ define([
 
             var insertion = this._getWarrantyOffersInsertion(productId, productSku);
             warrantyBlock[insertion.method](insertion.element);
-
             warrantyBlock.extendWarrantyOffers({
                 productSku: productSku,
                 buttonEnabled: this.options.buttonEnabled,
@@ -131,7 +127,7 @@ define([
 
             var elem = this.element;
             if (this.options.insertionPoint) {
-                elem = $(this.options.insertionPoint, this.element);
+                elem = $(this.options.insertionPoint);
                 if (!elem.length) {
                     elem = this.element;
                     method = 'appendTo';
@@ -170,6 +166,8 @@ define([
          * @return {Boolean}
          */
         _onAddToCart: function (event) {
+            event.preventDefault();
+            event.stopPropagation();
             this._removeWarrantyInputs();
 
             if (this.useNativeSubmit || (!this.options.buttonEnabled && !this.options.modalEnabled))
